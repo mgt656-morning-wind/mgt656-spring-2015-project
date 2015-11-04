@@ -80,7 +80,7 @@ if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your hour must be an integer');
   }
   
-  if (validator.isIn(request.body.year, 2015, 2016) === false) {
+  if (validator.isIn(request.body.year, 1, 2) === false) {
     contextData.errors.push('Your year must be 2015 or 2016');
   }
 
