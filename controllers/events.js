@@ -73,8 +73,8 @@ if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your month should be between January and December.');
   }
   
-    if (validator.isInt(request.body.year, 2015, 2016) === false) {
-    contextData.errors.push('Your year should be between 2015 and 2016.');
+    if (validator.isInt(request.body.year) === false) {
+    contextData.errors.push('Your year should be an integer');
   }
   if (validator.isInt(request.body.hour) === false) {
     contextData.errors.push('Your hour must be an integer');
