@@ -17,11 +17,11 @@
 			<ul >
 		<label for="title">Event Title</label>
 		<div>
-			<input id="text" name="text" required placeholder="enter event name here" type="text" maxlength="50"/> 
+			<input id="title" name="title" required placeholder="enter event name here" type="text" maxlength="50"/> 
 		</div> 
-		<label for="Location">Location </label>
+		<label for="location">Location </label>
 		<div>
-			<input id="Location" name="Location" required placeholder="put location here" type="Location" maxlength="50"/> 
+			<input id="location" name="location" required placeholder="put location here" type="location" maxlength="50"/> 
 		</div> 
 		<label for="image">Image Upload (must be png or gif)</label>
 
@@ -29,12 +29,12 @@
 
 			<form action="form_action.asp" accept="image/gif,image/png">
 
-  <input type="url" required placeholder="image url here" name="pic" 
-  id="pic" accept="image/gif,image/png" pattern="https?://.+" title="Include http://"><br>
+  <input type="url" required placeholder="image url here" name="image" 
+  id="image" accept="image/gif,image/png" pattern="https?://.+" title="Include http://"><br>
 
 </form>
 		</div>  
-		<label for="Year">Year </label>
+		<label for="year">Year </label>
 		<div>
 		<select id="year" name="year"> 
 			<option value="" selected="year"></option>
@@ -130,9 +130,9 @@
 
 		</select>
 		</div> 
-		<label for="minutes">Minutes </label>
+		<label for="minute">Minute </label>
 		<div>
-		<select id="minutes" name="minutes"> 
+		<select id="minute" name="minute"> 
 			<option selected="minutes"></option>
 <option value="0" >0</option>
 <option value="1" >30</option>
@@ -142,7 +142,7 @@
 
 			    <input type="hidden" name="form_id" />
 			    
-				<input id="saveForm" type="submit" name="submit" value="Submit" />
+				<input id="submit" type="submit" name="submit" value="submit" />
 			</ul>
 		</form>	
 
