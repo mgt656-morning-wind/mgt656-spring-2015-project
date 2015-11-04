@@ -58,7 +58,30 @@ function saveEvent(request, response){
   var contextData = {errors: []};
 
   if (validator.isLength(request.body.title, 5, 50) === false) {
-    contextData.errors.push('Your title should be between 5 and 100 letters.');
+    contextData.errors.push('Your title should be between 5 and 50 letters.');
+  }
+
+if (validator.isLength(request.body.location, 5, 50) === false) {
+    contextData.errors.push('Your location should be between 5 and 50 letters.');
+  }
+  
+  if (validator.isInt(request.body.day, 1, 31) === false) {
+    contextData.errors.push('Your day should be between 1 and 31.');
+  }
+  
+    if (validator.isInt(request.body.month, 1, 11) === false) {
+    contextData.errors.push('Your month should be between January and December.');
+  }
+  
+    if (validator.isInt(request.body.year, 2015, 2016) === false) {
+    contextData.errors.push('Your year should be between 2015 and 2016.');
+  }
+  if (validator.isInt(request.body.hour) === false) {
+    contextData.errors.push('Your hour must be an integer');
+  }
+  
+  if (validator.isIn(request.body.year, 2015, 2016) === false) {
+    contextData.errors.push('Your year must be 2015 or 2016');
   }
 
 
