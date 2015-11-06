@@ -91,15 +91,11 @@ if (validator.isIn(request.body.hour, 0, 23) === false) {
     contextData.errors.push('Your hour must be an integer');
   }
   
-  if (validator.isURL(request.body.image, 'http', 'https', 'png', 'gif') === false) {
-    contextData.errors.push('Your url must have http or https');
+if (validator.isURL(request.body.image)=== false) {
+    contextData.errors.push('Your image must be a url');
   }
-  //isURL(str [, options]) - check if the string is an URL. 
-  //options is an object which defaults to 
-  //{ protocols: ['http','https','ftp'], 
-  //require_tld: true, require_protocol: false, require_valid_protocol: true, allow_underscores: false, 
-  //host_whitelist: false, host_blacklist: false, allow_trailing_dot: false, allow_protocol_relative_urls: false }.
-
+//isURL(String str [, options]) - check if the string is an URL. options is an object which defaults to 
+//{ protocols: ['http','https','ftp'], require_tld: true, require_protocol: false, al
 
   if (contextData.errors.length === 0) {
     var newEvent = {
