@@ -68,21 +68,15 @@ if (validator.isLength(request.body.location, 5, 50) === false) {
   if (validator.isInt(request.body.day, 1, 31) === false) {
     contextData.errors.push('Your day should be between 1 and 31.');
   }
-  if (validator.isIn(request.body.day, 1, 31) === false) {
-    contextData.errors.push('Your day should be between 1 and 31.');
-  }
+  
     if (validator.isInt(request.body.month, 1, 11) === false) {
     contextData.errors.push('Your month should be between January and December.');
   }
-   if (validator.isIn(request.body.month, 1, 11) === false) {
-    contextData.errors.push('Your month should be between January and December.');
-  }
+ 
     if (validator.isInt(request.body.year, 1, 2) === false) {
     contextData.errors.push('Your year should be an integer');
   }
-  if (validator.isIn(request.body.year, 1, 2) === false) {
-    contextData.errors.push('Your year should be an integer');
-  }
+ 
   if (validator.isInt(request.body.hour, 0, 23) === false) {
     contextData.errors.push('Your hour must be an integer');
   }
