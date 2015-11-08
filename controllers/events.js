@@ -58,9 +58,38 @@ function saveEvent(request, response){
   var contextData = {errors: []};
 
   if (validator.isLength(request.body.title, 5, 50) === false) {
-    contextData.errors.push('Your title should be between 5 and 100 letters.');
+    contextData.errors.push('Your title should be between 5 and 50 letters.');
   }
 
+if (validator.isLength(request.body.location, 5, 50) === false) {
+    contextData.errors.push('Your location should be between 5 and 50 letters.');
+  }
+  
+  if (validator.isInt(request.body.day, 1, 31) === false) {
+    contextData.errors.push('Your day should be between 1 and 31.');
+  }
+  
+    if (validator.isInt(request.body.month, 1, 11) === false) {
+    contextData.errors.push('Your month should be between January and December.');
+  }
+ 
+    if (validator.isInt(request.body.year, 1, 2) === false) {
+    contextData.errors.push('Your year should be an integer');
+  }
+ 
+  if (validator.isInt(request.body.hour, 0, 23) === false) {
+    contextData.errors.push('Your hour must be an integer');
+  }
+  
+if (validator.isIn(request.body.hour, 0, 23) === false) {
+    contextData.errors.push('Your hour must be an integer');
+  }
+  
+if (validator.isURL(request.body.image)=== false) {
+    contextData.errors.push('Your image must be a url');
+  }
+//isURL(String str [, options]) - check if the string is an URL. options is an object which defaults to 
+//{ protocols: ['http','https','ftp'], require_tld: true, require_protocol: false, al
 
   if (contextData.errors.length === 0) {
     var newEvent = {
