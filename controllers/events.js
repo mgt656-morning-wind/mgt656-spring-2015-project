@@ -77,7 +77,7 @@ function saveEvent(request, response){
     contextData.errors.push('Your title should be between 5 and 50 letters.');
   }
   
-  isRangedInt(request.body.year, 'year', allowedDateInfo.years[0], allowedDateInfo.years[allowedDateInfo.years.length-1], contextData.errors);
+  isRangedInt(request.body.year, 'year', 2015, 2016, contextData.errors);
 isRangedInt(request.body.month, 'month', 0, 11, contextData.errors);
 isRangedInt(request.body.day, 'day', allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
 isRangedInt(request.body.hour, 'hour', allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
