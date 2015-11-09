@@ -254,7 +254,7 @@ describe('The event detail pages',function(){
     });
   });
 
-  it('should reject RSVPs from Yale addresses', function(done){
+  it('should reject RSVPs from non Yale addresses', function(done){
     var browser = new Browser();
     var email = 'foobar@harvard.edu';
 

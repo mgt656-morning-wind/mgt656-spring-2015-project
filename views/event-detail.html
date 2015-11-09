@@ -18,7 +18,20 @@
         {% endfor %}
     </ul>
     <p>Please come join us!</p>
+{% if errors %}
+<div>
+   <ul class="form-errors">
+       {% for error in errors %}
+       <li>{{error}}</li>
+       {% endfor %}
+   </ul> 
+</div>
+{% endif %}
 
+<form method="POST">
+    <input type="text" name="email" id="email" placeholder="your email"/>
+    <input type="submit" value="Submit"/>
+</form>
 </body>
 
 </html>

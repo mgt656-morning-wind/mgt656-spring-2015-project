@@ -81,7 +81,7 @@ function saveEvent(request, response){
 isRangedInt(request.body.month, 'month', 0, 11, contextData.errors);
 isRangedInt(request.body.day, 'day', allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
 isRangedInt(request.body.hour, 'hour', allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
-isRangedInt(request.body.minute, 'minute', allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors)
+isRangedInt(request.body.minute, 'minute', allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors);
 
 if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your location should be between 5 and 50 letters.');
@@ -121,21 +121,32 @@ function eventDetail (request, response) {
   response.render('event-detail.html', {event: ev});
 }
 
-function rsvp (request, response){
+function rsvp (request, response)
+{
   var ev = events.getById(parseInt(request.params.id));
-  if (ev === null) {
+  if (ev === null) 
+  {
     response.status(404).send('No such event');
   }
 
-  if(validator.isEmail(request.body.email)){
+  if(validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('yale') === -1)
+  {
     ev.attending.push(request.body.email);
     response.redirect('/events/' + ev.id);
-  }else{
-    var contextData = {errors: [], event: ev};
-    contextData.errors.push('Invalid email');
-    response.render('event-detail.html', contextData);    
   }
-
+  else
+    {
+      var contextData = {errors: [], event: ev};
+       if(request.body.email.toLowerCase().indexOf('harvard') !== -1)
+      {
+       contextData.errors.push('Invalid email, harvard');
+      }
+    else
+      {
+      contextData.errors.push('Invalid email');
+      response.render('event-detail.html', contextData);    
+      }
+    }
 }
 
 /**
