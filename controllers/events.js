@@ -26,7 +26,12 @@ var allowedDateInfo = {
   hours: [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
-  ]
+  ],
+  years: [2015,2016],
+  days: [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+    12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+  ],
 };
 
 /**
@@ -45,7 +50,7 @@ function listEvents(request, response) {
  * Controller that renders a page for creating new events.
  */
 function newEvent(request, response){
-  var contextData = {};
+  var contextData = {allowedDateInfo: allowedDateInfo};
   response.render('create-event.html', contextData);
 }
 
@@ -54,45 +59,47 @@ function newEvent(request, response){
  * Validates the form and adds the new event to
  * our global list of events.
  */
+ 
+function isRangedInt(number, name, min, max, errors){
+  if(validator.isInt(number)){
+    var numberAsInt = parseInt(number);
+    if(number >= min && number <= max){
+      return;
+    }
+}
+errors.push(name + "should be an an int in the range" + min + "to" + max);
+}
+
 function saveEvent(request, response){
-  var contextData = {errors: []};
+  var contextData = {errors: [], allowedDateInfo: allowedDateInfo};
 
   if (validator.isLength(request.body.title, 5, 50) === false) {
     contextData.errors.push('Your title should be between 5 and 50 letters.');
   }
+  
+  isRangedInt(request.body.year, 'year', allowedDateInfo.years[0], allowedDateInfo.years[allowedDateInfo.years.length-1], contextData.errors);
+isRangedInt(request.body.month, 'month', 0, 11, contextData.errors);
+isRangedInt(request.body.day, 'day', allowedDateInfo.days[0], allowedDateInfo.days[allowedDateInfo.days.length-1], contextData.errors);
+isRangedInt(request.body.hour, 'hour', allowedDateInfo.hours[0], allowedDateInfo.hours[allowedDateInfo.hours.length-1], contextData.errors);
+isRangedInt(request.body.minute, 'minute', allowedDateInfo.minutes[0], allowedDateInfo.minutes[allowedDateInfo.minutes.length-1], contextData.errors)
 
 if (validator.isLength(request.body.location, 5, 50) === false) {
     contextData.errors.push('Your location should be between 5 and 50 letters.');
   }
   
-  if (validator.isInt(request.body.day, 1, 31) === false) {
-    contextData.errors.push('Your day should be between 1 and 31.');
-  }
+  //additional code written by Wilma for validation test - saved for future use
+  //if (validator.isInt(request.body.day, 1, 31) === false) {contextData.errors.push('Your day should be between 1 and 31.');}
+  //if (validator.isInt(request.body.month, 1, 11) === false) {contextData.errors.push('Your month should be between January and December.');}
+  //if (validator.isInt(request.body.year, 1, 2) === false) {contextData.errors.push('Your year should be an integer');}
+  //if (validator.isInt(request.body.hour, 0, 23) === false) {contextData.errors.push('Your hour must be an integer');}
   
-    if (validator.isInt(request.body.month, 1, 11) === false) {
-    contextData.errors.push('Your month should be between January and December.');
+if (!validator.isURL(request.body.image) || (request.body.image.match(/\.(gif|png)$/i)===null)) {
+    contextData.errors.push('Your image should be a png or gif online');
   }
- 
-    if (validator.isInt(request.body.year, 1, 2) === false) {
-    contextData.errors.push('Your year should be an integer');
-  }
- 
-  if (validator.isInt(request.body.hour, 0, 23) === false) {
-    contextData.errors.push('Your hour must be an integer');
-  }
-  
-if (validator.isIn(request.body.hour, 0, 23) === false) {
-    contextData.errors.push('Your hour must be an integer');
-  }
-  
-if (validator.isURL(request.body.image)=== false) {
-    contextData.errors.push('Your image must be a url');
-  }
-//isURL(String str [, options]) - check if the string is an URL. options is an object which defaults to 
-//{ protocols: ['http','https','ftp'], require_tld: true, require_protocol: false, al
 
   if (contextData.errors.length === 0) {
     var newEvent = {
+      id: events.getById() + 1,
       title: request.body.title,
       location: request.body.location,
       image: request.body.image,
@@ -100,7 +107,7 @@ if (validator.isURL(request.body.image)=== false) {
       attending: []
     };
     events.all.push(newEvent);
-    response.redirect('/events');
+    response.redirect('/events/' + newEvent.id);
   }else{
     response.render('create-event.html', contextData);
   }
