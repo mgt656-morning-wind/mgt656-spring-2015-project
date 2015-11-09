@@ -67,7 +67,7 @@ function isRangedInt(number, name, min, max, errors){
       return;
     }
 }
-errors.push(name + "should be an an int in the range" + min + "to" + max);
+errors.push(name + " should be an an int in the range" + min + " to " + max);
 }
 
 function saveEvent(request, response){
