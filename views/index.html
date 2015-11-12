@@ -19,7 +19,7 @@
   <p>
     <div>
     
-    <a class="btn btn-primary btn-lg" href="/events/new" role="button">Create a new event</a>
+    <a href="/events/new" class="btn btn-primary btn-lg" role="button">Create a new event</a>
 
   </div>
     
@@ -27,11 +27,8 @@
   </p>
   <p>Here is our list of events!
   </p>
- <div>{% include "fragments/events-list.html"%}
+ <div>
+    {% include "fragments/events-list.html" %}
  </div>
- 
- <div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
  
 {% endblock %}
