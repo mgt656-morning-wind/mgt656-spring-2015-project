@@ -1,9 +1,13 @@
-<ul>
+<ul class="list-group">
   {% for event in events %}
-    <li class = "event" id = "event-{{event.id}}">
-      <a href ="views/events/{{event.id}}">{{event.title}}.</a>
+
+    <li class = "event list-group-item" id = "event-{{event.id}}">
+      <a href ="/events/{{event.id}}">{{event.title}}.</a>
+
       <time datetime="{{event.date}}">{{event.date|prettyDate}}</time>
       {{event.attending.length}} attending so far.
     </li>
   {% endfor %}
+  
+  
 </ul>

@@ -16,27 +16,27 @@
 		<form id="create-event" method="POST">					
 			<ul >
 		<label for="title">Event Title</label>
-		<div>
-			<input id="title" name="title" required placeholder="enter event name here" type="text" maxlength="50"/> 
+		<div class="form-group">
+			<input id="title" name="title" required placeholder="enter event name here" type="text" maxlength="50" class="form-control"/> 
 		</div> 
 		<label for="location">Location </label>
-		<div>
-			<input id="location" name="location" required placeholder="put location here" type="location" maxlength="50"/> 
+		<div class="form-group">
+			<input id="location" name="location" required placeholder="put location here" type="location" maxlength="50" class="form-control"/> 
 		</div> 
-		<label for="image">Image Upload (must be png or gif)</label>
 
-		<div>
+		<label for="image">Image Upload (must be png or gif)</label>
+		<div class="form-group">
 
 			<form action="form_action.asp" accept="image/gif,image/png">
-
+			
   <input type="url" required placeholder="image url here" name="image" 
-  id="image" accept="image/gif,image/png" pattern="https?://.+" title="Include http://"><br>
+  id="image" accept="image/gif,image/png" pattern="https?://.+" title="Include http://" class="form-control"><br>
 
 </form>
 		</div>  
 		<label for="year">Year </label>
-		<div>
-		<select id="year" name="year"> 
+		<div class="dropdown">
+		<select id="year" name="year" class="btn btn-default dropdown-toggle"> 
 			<option value="" selected="year"></option>
 <option value="2015" >2015</option>
 <option value="2016" >2016</option>
@@ -139,14 +139,16 @@
 
 		</select>
 		</div> 
-
+		<p>
+		</p>
 			    <input type="hidden" name="form_id" />
 			    
-				<input id="submit" type="submit" name="submit" value="submit" />
+				<input id="submit" class="btn btn-default" type="submit" name="submit" value="submit" />
 			</ul>
 		</form>	
 
 </form>
+	
 {% endblock %}
 
 
