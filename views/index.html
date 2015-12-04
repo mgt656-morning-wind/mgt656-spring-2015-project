@@ -2,33 +2,34 @@
 
 {% block header %}
   <header>
-    <h1>{{ title }} FTW</h1>
+    <h1 class="shading">Welcome to Morning Wind Events</h1>
   </header>
 {% endblock %}
 
 {% block mainContent %}
+  <h2><small>Register for SOM events or create your own!</small></h2>
+
+  <img src="http://antiquechildren.com/comicsill/SiClark_MorningWind.jpg" width=50% height=50% id="logo" class="img-rounded"></img>
   <p>
-    Welcome to {{ title }}. {{tagline}}
   </p>
-  <img src="http://www.marysrosaries.com/collaboration/images/2/2f/Morning_Glory_(PSF).png" width="200" height="200" id="logo"></img>
-  <p>
+  <p>  
     Check out the <a href="/about">About us</a> page
     as well as the <a href="/events">Events</a> page.
   </p>
-  <p>WTF</p>
   <p>
-    <div>
-    
-    <a id="new" href="/events/new" class="btn btn-primary btn-lg" role="button">Create a new event</a>
-
-  </div>
-    
-    
-  </p>
-  <p>Here is our list of events!
+  <p>
+    <h2><small>Upcoming Events:</small></h2>
   </p>
  <div>
     {% include "fragments/events-list.html" %}
  </div>
+    
+    <div>
+    <a id="new" href="/events/new" class="btn btn-primary btn-lg" role="button">Create a new event</a>
+  </div>
+    
+    
+  </p>
+
  
 {% endblock %}

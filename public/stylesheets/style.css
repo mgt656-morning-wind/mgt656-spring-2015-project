@@ -16,3 +16,29 @@ a {
 .form-control {
   width: 50%;
 }
+
+.stitched_element {
+border: 2px dashed  #ffffff;
+box-shadow: 0 0 0 8px #ff0030;
+color: blue;
+
+}
+
+.shading {
+  font-family: freight-sans-pro, sans-serif;
+  font-weight: 900;
+  background-color: #fff;	
+  color: #484848;
+  text-shadow:
+    0 1px #808d93,
+    -1px 0 #cdd2d5,
+    -1px 2px #808d93,
+    -2px 1px #cdd2d5,
+    -2px 3px #808d93,
+    -3px 2px #cdd2d5,
+
+  }
+
+.btn {
+  margin-top: 10px;
+}
