@@ -48,5 +48,23 @@
 
 </html>
 
+ <!-- Load the Content Experiment JavaScript API client for the experiment -->
+<script src= "http://www.google-analytics.com/cx/api.js?experiment=uiIK0pfrRROECVDpRV2QSw"> </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script>
+var pageVariations = [
+  function() {},
+  function() {
+    $( 'a.donation' ).text('Support our kickass party!');
+  }
+];
+
+
+$(document).ready(function() {
+  var chosenVariation = cxApi.chooseVariation('uiIK0pfrRROECVDpRV2QSw');
+  pageVariations[chosenVariation]();
+});
+</script>
 
 
