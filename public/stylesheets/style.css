@@ -62,3 +62,43 @@ div.desc {
     padding: 15px;
     text-align: center;
 }
+
+
+div.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+div.footer li {
+    float: left;
+}
+
+div.footer li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+div.footer li a:hover {
+    background-color: #111;
+}
+
+div.header { 
+ font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+	color: #6B7B8A;
+	line-height: 90%;
+	margin: .2em 0 .4em 0;
+	letter-spacing: -2px;  }
+
+div.header2 {
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+		font-size: 28px;
+		line-height: 40px;
+		letter-spacing: -1px;color: #444;
+}

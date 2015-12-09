@@ -10,7 +10,7 @@
 	<body class="container">
 
     {% block header %}
-      <header><h1 class="shading">Morning Wind Events</h1></header>
+      <header><div class="header">Morning Wind Events</div></header>
     {% endblock %}
 
     {% block mainContent %}
@@ -20,11 +20,13 @@
 
     {% block footer %}
       <footer>
-      <div class="btn-group" role="group" aria-label="...">
-      <button type="button" class="btn btn-default"><a href="/">Home</a></button>
-      <button type="button" class="btn btn-default"><a href="/about">About</a></button>
-      <button type="button" class="btn btn-default"><a href="/events">Events</a></button>
-      </div>
+         <div class="footer">
+           <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/events">Events</a></li>
+          </ul>
+         </div>
       </footer>
     {% endblock %}
 
