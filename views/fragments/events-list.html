@@ -1,6 +1,5 @@
 <ul class="list-group">
   {% for event in events %}
-
     <li class = "event list-group-item" id = "event-{{event.id}}">
       <a href ="/events/{{event.id}}">{{event.title}}.</a>
 
@@ -8,7 +7,7 @@
       {{event.attending.length}} attending so far.
     </li>
   {% endfor %}
-  </ul>
+</ul>
   
   <!-- Load the Content Experiment JavaScript API client for the experiment -->
 <script src= "http://www.google-analytics.com/cx/api.js?experiment=NHfhQ_ZuQUOk9TZI9WTG1w"> </script>
@@ -18,17 +17,14 @@
 var pageVariations = [
   function() {},
   function() {
-    $( 'li.event' ).prepend( 'RSVP ' );
+    $( 'li.event' ).prepend('RSVP ');
   }
 ];
 
 
-$(document).ready(function(){
-
+$(document).ready(function() {
   var chosenVariation = cxApi.chooseVariation('NHfhQ_ZuQUOk9TZI9WTG1w');
-
   pageVariations[chosenVariation]();
-}
-);
+});
 </script>
   
