@@ -27,7 +27,18 @@ function index (request, response) {
   response.render('index.html', contextData);
 }
 
-
+function donate (request, response) {
+  var now = new Date();
+  var contextData = {
+    'title': 'MGT 656',
+    'tagline': 'We gonna get that money',
+    
+    
+    
+  };
+ 
+  response.render('index.html', contextData);
+}
 
 module.exports = {
   index: index
