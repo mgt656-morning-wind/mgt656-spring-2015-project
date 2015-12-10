@@ -9,9 +9,9 @@
     <h1 id="title">{{event.title}}</h1>
     <p>This is the event detail page for {{event.title}}</p>
     <img src="{{event.image}}" id="image"></img>
-    <p>Where:<span id="location">{{event.location}}</span></p>
-    <p>When:<span id="date">{{event.date}}</span></p>
-    <p>Who:</p>
+    <h4><p><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> Where: <span id="location">{{event.location}}</span></p></h4>
+    <h4><p><i class="glyphicon glyphicon-time" aria-hidden="true"></i> When: <span id="date">{{event.date}}</span></p></h4>
+    <h4><p><i class="glyphicon glyphicon-user" aria-hidden="true"></i> Who: </p></h4>
     <ul id="attendees" class="list-group">
         {% for person in event.attending %}
         <li class = "list-group-item">{{person}}</li>
