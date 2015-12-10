@@ -33,11 +33,9 @@ function donate (request, response) {
     'title': 'MGT 656',
     'tagline': 'We gonna get that money',
     
-    
-    
   };
  
-  response.render('index.html', contextData);
+  response.render('donate.html', contextData);
 }
 
 module.exports = {
