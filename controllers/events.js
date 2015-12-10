@@ -121,6 +121,10 @@ function eventDetail (request, response) {
   response.render('event-detail.html', {event: ev});
 }
 
+var server;
+
+
+
 function rsvp (request, response)
 {
   var ev = events.getById(parseInt(request.params.id));
@@ -129,7 +133,7 @@ function rsvp (request, response)
     response.status(404).send('No such event');
   }
 
-  if(validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('yale') !== -1)
+  if(validator.isEmail(request.body.email) && request.body.email.toLowerCase().indexOf('@yale.edu') !== -1)
   {
     ev.attending.push(request.body.email);
     response.redirect('/events/' + ev.id);
@@ -137,17 +141,15 @@ function rsvp (request, response)
   else
     {
       var contextData = {errors: [], event: ev};
-       if(request.body.email.toLowerCase().indexOf('harvard') !== -1)
-      {
-       contextData.errors.push('Invalid email, harvard');
+      if(request.body.email.toLowerCase().indexOf('harvard') !== -1) {
+        contextData.errors.push('Invalid email, harvard');
+      } else {
+        contextData.errors.push('Invalid email');
       }
-    else
-      {
-      contextData.errors.push('Invalid email');
-      response.render('event-detail.html', contextData);    
-      }
+      response.render('event-detail.html', contextData); 
     }
 }
+ 
 
 function api(request, response) {
   var output = {events: []};
